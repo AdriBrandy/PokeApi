@@ -30,7 +30,7 @@ const Hero = ({ language = "es" }) => {
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
-              <h1>{language === "es" ? "Transformando " : "Shaping"}</h1>
+              <h1>{language === "es" ? "Coleccionando " : "Collecting"}</h1>
             </div>
             <div className="hero-text">
               <span className="slide">
@@ -54,8 +54,8 @@ const Hero = ({ language = "es" }) => {
             <div className="hero-text">
               <h1>
                 {language === "es"
-                  ? "en Proyectos Reales"
-                  : "into Real Projects"}
+                  ? "del mundo Pokémon"
+                  : "from the Pokémon world"}
               </h1>
             </div>
             <div className="hidden md:flex flex-wrap gap-4">

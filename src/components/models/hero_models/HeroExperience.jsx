@@ -24,7 +24,7 @@ const Pokemon = () => {
     }
   }, [actions]);
  
-  return <primitive object={gltf.scene} scale={3} position={[0, -2, 0]} />
+  return <primitive object={gltf.scene} scale={4} position={[0, -3, 0]} />
   ;
 };
 

@@ -17,24 +17,24 @@ const navLinks = {
 
 const words = {
   en: [
-    { text: "Ideas", imgPath: "/images/logos/bulbasaur.png" },
-    { text: "Dreams", imgPath: "/images/logos/eevee.png" },
-    { text: "Designs", imgPath: "/images/logos/jigglypuff.png" },
-    { text: "Code", imgPath: "/images/logos/togepi.png" },
-    { text: "Ideas", imgPath: "/images/logos/bulbasaur.png" },
-    { text: "Dreams", imgPath: "/images/logos/eevee.png" },
-    { text: "Designs", imgPath: "/images/logos/jigglypuff.png" },
-    { text: "Code", imgPath: "/images/logos/togepi.png" },
+    { text: "Pokémons", imgPath: "/images/logos/bulbasaur.png" },
+    { text: "Adventures", imgPath: "/images/logos/eevee.png" },
+    { text: "Battles", imgPath: "/images/logos/jigglypuff.png" },
+    { text: "Friendships", imgPath: "/images/logos/togepi.png" },
+    { text: "Pokémons", imgPath: "/images/logos/bulbasaur.png" },
+    { text: "Adventures", imgPath: "/images/logos/eevee.png" },
+    { text: "Battles", imgPath: "/images/logos/jigglypuff.png" },
+    { text: "Friendships", imgPath: "/images/logos/togepi.png" },
   ],
   es: [
-    { text: "Ideas", imgPath: "/images/logos/bulbasaur.png" },
-    { text: "Sueños", imgPath: "/images/logos/eevee.png" },
-    { text: "Diseños", imgPath: "/images/logos/jigglypuff.png" },
-    { text: "Código", imgPath: "/images/logos/togepi.png" },
-    { text: "Ideas", imgPath: "/images/logos/bulbasaur.png" },
-    { text: "Sueños", imgPath: "/images/logos/eevee.png" },
-    { text: "Diseños", imgPath: "/images/logos/jigglypuff.png" },
-    { text: "Código", imgPath: "/images/logos/togepi.png" },
+    { text: "Pokémons", imgPath: "/images/logos/bulbasaur.png" },
+    { text: "Aventuras", imgPath: "/images/logos/eevee.png" },
+    { text: "Batallas", imgPath: "/images/logos/jigglypuff.png" },
+    { text: "Amistades", imgPath: "/images/logos/togepi.png" },
+    { text: "Pokémons", imgPath: "/images/logos/bulbasaur.png" },
+    { text: "Aventuras", imgPath: "/images/logos/eevee.png" },
+    { text: "Batallas", imgPath: "/images/logos/jigglypuff.png" },
+    { text: "Amistades", imgPath: "/images/logos/togepi.png" },
   ]
 };
 
