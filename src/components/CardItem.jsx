@@ -1,74 +1,3 @@
-
-// import React, { useEffect, useState } from "react";
-// import {
-//   MagnifyingGlassIcon,
-//   ArrowLeftIcon,
-//   ArrowRightIcon,
-// } from "@heroicons/react/24/solid";
-
-// const CardItem = () => {
-//   const [pokemonId, setPokemonId] = useState(1);
-//   const [pokemon, setPokemon] = useState(null);
-
-//   useEffect(() => {
-//     fetch("http://localhost:4000/api/pokemon/${pokemonId}")
-//       .then((res) => res.json())
-//       .then((data) => setPokemons(data))
-//       .catch((err) => console.error("Error al cargar pokemons:", err));
-//   }, []);
-//   const getIdFromUrl = (url) => {
-//     const parts = url.split("/").filter(Boolean);
-//     return parts[parts.length - 1];
-//   };
-
-//   return (
-//     <>
-//       <div className="flex flex-wrap gap-4 justify-center">
-//         {pokemons.map((poke) => {
-          
-//           const id = getIdFromUrl(poke.url);
-//           const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-
-//           return (
-//             <div className="relative w-[350px] shadow-xl rounded-2xl overflow-hidden">
-//               <img
-//                 src="/images/pokedex-copia.png"
-//                 alt="card"
-//                 className="rounded-2xl w-full h-auto object-contain"
-//               />
-//               <div className="absolute top-[60%] left-[19%] text-black text-[1rem] font-semibold italic bg-slate-200 px-12 py-1.5  rounded-xl">
-//                 <p>#{id} {poke.name}</p>
-//               </div>
-//               <img
-//                 src={imageUrl}
-//                 className="absolute top-[35%] left-[35%] object-contain w-25"
-//               />
-//               <input
-//                 className="absolute rounded-xl w-40 py-4 text-black px-2 bg-emerald-300 top-[80%] left-[12%] placeholder-black hover:bg-emerald-500"
-//                 type="text"
-//                 placeholder="Nombre o ID"
-//               />
-//               <button
-//                 type="button"
-//                 className="absolute top-[70%] left-[10%] rounded-4xl bg-black border-2 border-slate-500 py-2.5 px-3 hover:bg-slate-500 hover:border-sky-950"
-//               >
-//                 <MagnifyingGlassIcon className="w-4 h-4 text-white" />
-//               </button>
-//               <button className="absolute top-[79%] left-[62%] hover:bg-slate-700">
-//                 <ArrowLeftIcon className="w-4 h-4 text-white" />
-//               </button>
-//               <button className="absolute top-[79%] left-[75%] hover:bg-slate-700">
-//                 <ArrowRightIcon className="w-4 h-4 text-white" />
-//               </button>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default CardItem;
 import React, { useEffect, useState } from "react";
 import {
   MagnifyingGlassIcon,
@@ -79,19 +8,37 @@ import {
 const CardItem = () => {
   const [pokemonId, setPokemonId] = useState(1);
   const [pokemon, setPokemon] = useState(null);
+  const [pokemonImage, setPokemonImage] = useState(null); // Estado para la imagen
 
+  // Función para cargar la imagen con caché en localStorage
+  const loadPokemonImage = (id) => {
+    const cachedImage = localStorage.getItem(`pokemonImage_${id}`);
+    if (cachedImage) {
+      return Promise.resolve(cachedImage);
+    }
+
+    return fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const imageUrl = URL.createObjectURL(blob);
+        localStorage.setItem(`pokemonImage_${id}`, imageUrl); // Guarda la imagen en caché
+        return imageUrl;
+      });
+  };
+
+  // useEffect para cargar los datos del Pokémon
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+    fetch(`/api/pokemon/${pokemonId}`)
       .then((res) => res.json())
-      .then((data) => {
-        setPokemon({
-          id: data.id,
-          name: data.name,
-          image:
-            data.sprites.other["official-artwork"].front_default, 
-        });
-      })
+      .then((data) => setPokemon(data))
       .catch((err) => console.error("Error al cargar el Pokémon:", err));
+
+    // Cargar la imagen usando el caché
+    loadPokemonImage(pokemonId)
+      .then((imageUrl) => {
+        setPokemonImage(imageUrl);
+      })
+      .catch((err) => console.error("Error al cargar la imagen", err));
   }, [pokemonId]);
 
   const handlePrev = () => {
@@ -110,7 +57,7 @@ const CardItem = () => {
         className="rounded-2xl w-full h-auto object-contain"
       />
 
-      {pokemon && (
+      {pokemon && pokemonImage && (
         <>
           <div className="absolute top-[60%] left-[19%] text-black text-[1rem] font-semibold italic bg-slate-200 w-53 text-center py-1.5 rounded-xl">
             <p>
@@ -119,9 +66,9 @@ const CardItem = () => {
             </p>
           </div>
           <img
-            src={pokemon.image}
+            src={pokemonImage} // Usamos la URL de la imagen que está en el estado
             alt={pokemon.name}
-             loading="lazy"
+            loading="lazy"
             className="absolute top-[35%] left-[35%] w-[100px]"
           />
         </>
@@ -154,4 +101,3 @@ const CardItem = () => {
 };
 
 export default CardItem;
-
