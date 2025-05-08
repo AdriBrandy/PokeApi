@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const PokeCard = ({ id, name, type, hp, abilities, language = "es" }) => {
+const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
   return (
     <Styled>
       <div className="card-container animate-float">
@@ -36,7 +36,12 @@ const PokeCard = ({ id, name, type, hp, abilities, language = "es" }) => {
             <div className="bg-white/90 backdrop-blur rounded-lg p-3 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="type-fire text-white  px-2 py-1 rounded-full">
-                  {type[language]}
+                  {types.map((t, i) => (
+                    <span key={i}>
+                      {t[language]}
+                      {i < types.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
                 </span>
                 <div className="space-y-1">
                   <p className="font-semibold text-black">Habilidades:</p>
