@@ -102,7 +102,7 @@ const PokeList = ({ language }) => {
   return (
     <div id="pokedex" className="mb-10 scroll-m-32">
       <TitleHeader title={title} sub={sub} />
-      <div className="p-4 bg-black">
+      <div className="p-4 bg-black items-center">
         <div className="flex flex-col sm:flex-row gap-2 mb-4 justify-center">
           <input
             type="text"
