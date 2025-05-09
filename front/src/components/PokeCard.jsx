@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
+  
   return (
     <Styled>
       <div className="card-container animate-float">
-        <div className="card w-40 sm:w-60 rounded-xl overflow-hidden">
+        <div className="card max-w-60 sm:w-60 rounded-xl overflow-hidden">
           <div className="glow-effect"></div>
           <div className="rainbow-border"></div>
           <div className="relative bg-gradient-to-br from-orange-400 via-amber-500 to-rose-500 p-3 rounded-xl">
@@ -13,7 +14,7 @@ const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
             <div className="flex justify-between items-start mb-2">
               <h2 className="text-lg font-bold text-white">{name}</h2>
               <div className="flex items-center gap-1">
-                <span className="text-white font-bold">HP</span>
+                <span className="text-white font-bold ">HP:</span>
                 <span className="text-white font-bold">{hp}</span>
               </div>
             </div>
@@ -33,9 +34,9 @@ const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
               />
             </div>
 
-            <div className="bg-white/90 backdrop-blur rounded-lg p-3 space-y-3">
+            <div className="bg-white/90 backdrop-blur rounded-lg p-1 space-y-3">
               <div className="flex items-center gap-2">
-                <span className="type-fire text-white  px-2 py-1 rounded-full">
+                <span className="type-fire max-w-18 text-white  px-1 rounded-2xl">
                   {types.map((t, i) => (
                     <span key={i}>
                       {t[language]}
@@ -44,7 +45,7 @@ const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
                   ))}
                 </span>
                 <div className="space-y-1">
-                  <p className="font-semibold text-black">Habilidades:</p>
+                  <p className="text-xs text-black">Habilidades:</p>
                   <ul className="text-xs text-neutral-700 list-disc list-inside">
                     {abilities.map((ab, i) => (
                       <li key={i}>{ab[language]}</li>

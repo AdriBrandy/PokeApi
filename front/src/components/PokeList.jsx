@@ -72,12 +72,11 @@ const PokeList = ({ language }) => {
             id: data.id,
             name: data.name.charAt(0).toUpperCase() + data.name.slice(1),
             types,
-            hp: data.hp,
+            hp: data.hp, // <-- este valor viene del backend
             abilities,
           };
         });
 
-        console.log("Cards creadas:", cards);
         setPokemonList(cards);
         setFilteredList(cards);
       } catch (err) {
@@ -131,8 +130,8 @@ const PokeList = ({ language }) => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4">
-          {filteredList.map((poke, index) => (
-            <PokeCard key={index} {...poke} language={language} />
+          {filteredList.map((poke) => (
+            <PokeCard key={poke.id} {...poke} language={language} />
           ))}
         </div>
       </div>
