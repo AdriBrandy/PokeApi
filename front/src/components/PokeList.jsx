@@ -102,7 +102,7 @@ const PokeList = ({ language }) => {
   return (
     <div id="pokedex" className="mb-10 scroll-m-32">
       <TitleHeader title={title} sub={sub} />
-      <div className="p-4 bg-black items-center">
+      <div className="p-4 bg-black items-center justify-center">
         <div className="flex flex-col sm:flex-row gap-2 mb-4 justify-center">
           <input
             type="text"
@@ -129,7 +129,7 @@ const PokeList = ({ language }) => {
           </select>
         </div>
 
-        <div className="justify-center items-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="justify-center ml-10 mr-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {filteredList.map((poke) => (
             <PokeCard key={poke.id} {...poke} language={language} />
           ))}

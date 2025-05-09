@@ -5,8 +5,8 @@ const PokeCard = ({ id, name, types, hp, abilities, language = "es" }) => {
   
   return (
     <Styled>
-      <div className="card-container animate-float">
-        <div className="card max-w-60 sm:w-60 rounded-xl overflow-hidden">
+      <div className="card-container animate-float ">
+        <div className="card  max-w-60 sm:w-60 rounded-xl overflow-hidden">
           <div className="glow-effect"></div>
           <div className="rainbow-border"></div>
           <div className="relative bg-gradient-to-br from-orange-400 via-amber-500 to-rose-500 p-3 rounded-xl">
